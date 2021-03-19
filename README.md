@@ -11,10 +11,10 @@ The following pieces need to be in place in order to run the application.
 * Python 3.0 or greater
 
 ## Running the application
-To download the application you can either download [the archive](https://github.com/couchbaselabs/CloudPublicAPISameple) or clone the repository:
+To download the application you can either download [the archive](https://github.com/couchbaselabs/cloud_public_api_sample) or clone the repository:
 
 ```
-$ git clone https://github.com/couchbaselabs/CloudPublicAPISameple
+$ git clone https://github.com/couchbaselabs/cloud_public_api_sample
 ```
 
 The application uses several Python libraries that need to be installed, this are listed in _requirements.txt_ and can be automatically loaded using the _pip_ command:
@@ -22,8 +22,8 @@ The application uses several Python libraries that need to be installed, this ar
 $ pip install -r requirements.txt
 ```
 
-Launch the application by running the _cloudAPISample.py_ file from a terminal.
+Launch the application by running the _cloud_public_api_sample.py_ file from a terminal.
  
 ```
-$ python cloudAPISample.py
+$ python cloud_public_api_sample.py
 ```
