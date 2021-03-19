@@ -49,7 +49,7 @@ def ListClouds():
     cloud_table_rows = list_clouds()
 
     # Table heading / rows for the output
-    cloud_table_headings = ['Name','Provider','Created at', 'ID']
+    cloud_table_headings = ['Name','Provider','Region', 'ID']
 
     print('Cloud')
 
