@@ -2,7 +2,6 @@
 This is a sample application to demonstrate using Couchbase Cloud Public API to automate operations
 The application lists the cloud connections
 
-![Application](app.png)
 
 ## Prerequisites
 The following pieces need to be in place in order to run the application.
