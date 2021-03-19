@@ -1,9 +1,5 @@
 # CloudPublicAPISample
-
-_For Couchbase Server 5.0 see [this branch](https://github.com/couchbaselabs/try-cb-python/tree/5.0) for latest changes to authentication_
-
-# Couchbase Python travel-sample Application REST Backend
-This is a sample application for getting started with Couchbase Cloud Public API . 
+This is a sample application to demonstrate using Couchbase Cloud Public API to automate operations
 The application lists the cloud connections
 
 ![Application](app.png)
