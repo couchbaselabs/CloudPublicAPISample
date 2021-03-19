@@ -42,7 +42,7 @@ def list_clouds():
         # Send the table header & rows to _pretty_table
         # and print the output from it
 
-    return cloud_list
+    return(cloud_list)
 
 
 def get_api_status():
