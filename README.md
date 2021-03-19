@@ -1,5 +1,5 @@
 # CloudPublicAPISample
-This is a sample application to demonstrate using Couchbase Cloud Public API to automate operations
+This is a sample application to demonstrate using Couchbase Cloud Public API to automate operations.  
 The application lists the cloud connections
 
 
