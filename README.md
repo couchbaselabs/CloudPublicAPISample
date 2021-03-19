@@ -3,13 +3,8 @@
 _For Couchbase Server 5.0 see [this branch](https://github.com/couchbaselabs/try-cb-python/tree/5.0) for latest changes to authentication_
 
 # Couchbase Python travel-sample Application REST Backend
-This is a sample application for getting started with Couchbase Server and the Python SDK. 
-The application runs a single page web UI for demonstrating SQL for Documents (N1QL), Sub-document requests and Full Text Search (FTS) querying capabilities. 
-It uses Couchbase Server together with the Python Flask web platform, Angular2 and Bootstrap.
-
-The application is a flight planner that allows the user to search for and select a flight route (including the return flight) based on airports and dates. 
-Airport selection is done dynamically using an angular autocomplete box bound to N1QL queries on the server side. After selecting a date, it then searches 
-for applicable air flight routes from a previously populated database. An additional page allows users to search for Hotels using less structured keywords.
+This is a sample application for getting started with Couchbase Cloud Public API . 
+The application lists the cloud connections
 
 ![Application](app.png)
 
