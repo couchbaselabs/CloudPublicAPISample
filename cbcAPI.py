@@ -24,22 +24,22 @@ __status__ = 'Dev'
 
 access_key=os.environ['cbc_access_key']
 secret_key=os.environ['cbc_secret_key']
-api_url=os.environ['cbc_api_url']
+api_base_url=os.environ['cbc_api_url']
 
 
 
 def cbc_api_get(api_endpoint):
-    cbc_api_get_response = requests.get(api_url + api_endpoint, auth=CbcAPIAuth(access_key, secret_key))
+    cbc_api_get_response = requests.get(api_base_url + api_endpoint, auth=CbcAPIAuth(access_key, secret_key))
     return _check_response(cbc_api_get_response)
 
 
 def cbc_api_put(api_endpoint, request_body):
-    cbc_api_put_response = requests.post(api_url + api_endpoint, json=request_body, auth=CbcAPIAuth(access_key, secret_key))
+    cbc_api_put_response = requests.post(api_base_url + api_endpoint, json=request_body, auth=CbcAPIAuth(access_key, secret_key))
     return _check_response(cbc_api_put_response)
 
 
 def cbc_api_del(api_endpoint):
-    cbc_api_del_response = requests.delete(api_url + api_endpoint, auth=CbcAPIAuth(access_key, secret_key))
+    cbc_api_del_response = requests.delete(api_base_url + api_endpoint, auth=CbcAPIAuth(access_key, secret_key))
     return _check_response(cbc_api_del_response)
 
 
@@ -48,7 +48,7 @@ def _check_response(response):
         print('[!] [{0}] Server Error'.format(response.status_code))
         return None
     elif response.status_code == 404:
-        print('[!] [{0}] URL not found: [{1}]'.format(response.status_code, api_url))
+        print('[!] [{0}] URL not found: [{1}]'.format(response.status_code, api_base_url))
         return None
     elif response.status_code == 401:
         print('[!] [{0}] Authentication Failed'.format(response.status_code))
