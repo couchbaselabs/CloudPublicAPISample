@@ -24,7 +24,7 @@ __status__ = 'Dev'
 
 access_key=os.environ['cbc_access_key']
 secret_key=os.environ['cbc_secret_key']
-api_base_url=os.environ['cbc_api_url']
+api_base_url=os.environ['cbc_api_base_url']
 
 
 
