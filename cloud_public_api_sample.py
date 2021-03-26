@@ -64,7 +64,7 @@ def ListClouds():
 
 
 def main():
-    if get_api_status() == 'OK':
+    if get_api_status() == 'Success':
         ListClouds()
     else:
         print('Whoops something has gone wrong')

@@ -22,11 +22,16 @@ __maintainer__ = 'Jonathan Giffard'
 __email__ = 'jonathan.giffard@couchbase.com'
 __status__ = 'Dev'
 
-# Get the environmental variables that hold
-# the values we will need
+# Handles talking to the endpoints
+# Returns a dictionary  ,   api_response = { responseContent : ' response ' ,
+# responseStatus : { httpStatus : 'http response', httpMessage : 'http message' }}
+# responseStatus allows the caller to take action on the http Status e.g 401 and the http
+# message e.g Authentication failed if it wishes to
 
 
 def _cbc_api_get_environ():
+    # Get the environmental variables that hold
+    # the values we will need
     # Return value, set to None
 
     api_access_info = None
@@ -98,28 +103,52 @@ def cbc_api_del(api_endpoint):
 
 
 def _check_response(response):
+
+    api_response = {'responseContent': {},
+                    'responseHTTPInfo': {
+                        'httpStatus': '',
+                        'httpMessage': ''
+                    },
+                    'responseStatus' : ''
+                    }
+
+    http_message = ''
+
+    api_response['responseHTTPInfo']['httpStatus'] = response.status_code
+
     if response.status_code >= 500:
         print('[!] [{0}] Server Error'.format(response.status_code))
-        return None
+        http_message = '[!] [{0}] Server Error'
+        api_response['responseStatus'] = None
     elif response.status_code == 404:
-        print('[!] [{0}] URL not found: [{1}]'.format(response.status_code, api_base_url))
-        return None
+        print('[!] [{0}] URL not found: [{1}]'.format(response.status_code))
+        http_message = '[!] [{0}] URL not found: [{1}] '
+        api_response['responseStatus'] = None
     elif response.status_code == 401:
         print('[!] [{0}] Authentication Failed'.format(response.status_code))
-        return None
+        http_message = '[!] [{0}] Authentication Failed'
+        api_response['responseStatus'] = None
     elif response.status_code >= 400:
         print('[!] [{0}] Bad Request'.format(response.status_code))
+        http_message = '[!] [{0}] Bad Request'
+        api_response['responseStatus'] = None
         print(response.content)
-        return None
     elif response.status_code >= 300:
         print('[!] [{0}] Unexpected redirect.'.format(response.status_code))
-        return None
+        http_message = '[!] [{0}] Bad Request'
+        api_response['responseStatus'] = None
     elif response.status_code == 200:
-        return json.loads(response.content)
+        api_response['responseContent'] = json.loads(response.content)
+        http_message = 'Success'
     elif response.status_code == 204:
-        return response.content
+        api_response['responseContent'] = json.loads(response.content)
+        http_message = 'Success'
     else:
         print('[?] Unexpected Error: [HTTP {0}]: Content: {1}'.format(response.status_code, response.content))
-        return None
+        http_message = '[?] Unexpected Error: [HTTP {0}]: Content: {1}'
+        api_response['responseStatus'] = None
 
+    api_response['responseHTTPInfo']['httpMessage'] = http_message
+
+    return api_response
 
