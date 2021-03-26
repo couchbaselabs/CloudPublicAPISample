@@ -43,9 +43,14 @@ def list_clouds():
 
 def get_api_status():
 
-    api_status = cbc_api_get('/v2/status')
+    returned_api_status = None
 
-    return(api_status["status"])
+    check_api_status = cbc_api_get('/v2/status')
+
+    if check_api_status is not None:
+        returned_api_status = check_api_status['status']
+
+    return returned_api_status
 
 
 

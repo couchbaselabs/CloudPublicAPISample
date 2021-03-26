@@ -47,13 +47,18 @@ def ListClouds():
     # which will be used as rows in the output table
 
     cloud_table_rows = list_clouds()
+    if len(cloud_table_rows) > 0:
+        # We got data back
+        # Table heading / rows for the output
+        cloud_table_headings = ['Name','Provider','Region', 'ID']
 
-    # Table heading / rows for the output
-    cloud_table_headings = ['Name','Provider','Region', 'ID']
+        print('Cloud')
+        print( _pretty_table(cloud_table_headings,cloud_table_rows))
+    else:
+        # We didn't get anything back
+        print('Whoops something has gone wrong')
+        print('Check environmental variables')
 
-    print('Cloud')
-
-    print( _pretty_table(cloud_table_headings,cloud_table_rows))
 
     return
 
@@ -61,6 +66,8 @@ def ListClouds():
 def main():
     if get_api_status() == 'OK':
         ListClouds()
+    else:
+        print('Whoops something has gone wrong')
 
 if __name__ == '__main__':
         main()

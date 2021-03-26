@@ -33,7 +33,7 @@ set environment variables for the base URL , access and secret keys.
 replace <> by your values for secret and access keys.
 
 ```
-$ export cbc_api_url='https://cloudapi.cloud.couchbase.com'
+$ export cbc_base_url='https://cloudapi.cloud.couchbase.com'
 $ export cbc_secret_key='<>'
 $ export cbc_access_key='<>'
 ```

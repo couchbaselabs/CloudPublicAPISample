@@ -22,25 +22,79 @@ __maintainer__ = 'Jonathan Giffard'
 __email__ = 'jonathan.giffard@couchbase.com'
 __status__ = 'Dev'
 
-access_key=os.environ['cbc_access_key']
-secret_key=os.environ['cbc_secret_key']
-api_base_url=os.environ['cbc_api_base_url']
+# Get the environmental variables that hold
+# the values we will need
 
+
+def _cbc_api_get_environ():
+    # Return value, set to None
+
+    api_access_info = None
+
+    # Read the values from the environmental variables
+    api_access_info_values  = {'access_key': os.environ.get('cbc_access_key'),
+                       'secret_key': os.environ.get('cbc_secret_key'),
+                       'api_base_url': os.environ.get('cbc_base_url')
+                       }
+
+    # Check we got all of the values
+    # It's a None if the environment variable was not set
+    if api_access_info_values['access_key'] is not None:
+        if api_access_info_values['secret_key'] is not None:
+            if api_access_info_values['api_base_url'] is not None:
+                api_access_info = api_access_info_values
+            else:
+                api_access_info = None
+                print('Environmental variable api_base_url is missing or empty')
+        else:
+            print('Environmental variable secret_key is missing or empty')
+    else:
+        print('Environmental variable access_key is missing or empty')
+
+    return api_access_info
 
 
 def cbc_api_get(api_endpoint):
-    cbc_api_get_response = requests.get(api_base_url + api_endpoint, auth=CbcAPIAuth(access_key, secret_key))
-    return _check_response(cbc_api_get_response)
+
+    api_access_values = _cbc_api_get_environ()
+
+    cbc_api_checked_response = None
+
+    if api_access_values is not None:
+        cbc_api_get_response = requests.get(api_access_values['api_base_url'] + api_endpoint, auth=CbcAPIAuth(api_access_values['access_key'], api_access_values['secret_key']))
+
+        cbc_api_checked_response = _check_response(cbc_api_get_response)
+
+    return cbc_api_checked_response
 
 
 def cbc_api_put(api_endpoint, request_body):
-    cbc_api_put_response = requests.post(api_base_url + api_endpoint, json=request_body, auth=CbcAPIAuth(access_key, secret_key))
-    return _check_response(cbc_api_put_response)
+
+    cbc_api_checked_response = None
+
+    api_access_values = _cbc_api_get_environ()
+
+    if api_access_values is not None:
+        cbc_api_put_response = requests.post(api_access_values['api_base_url'] + api_endpoint, json=request_body, auth=CbcAPIAuth(api_access_values['access_key'], api_access_values['secret_key']))
+
+        cbc_api_checked_response = _check_response(cbc_api_put_response)
+
+    return cbc_api_checked_response
 
 
 def cbc_api_del(api_endpoint):
-    cbc_api_del_response = requests.delete(api_base_url + api_endpoint, auth=CbcAPIAuth(access_key, secret_key))
-    return _check_response(cbc_api_del_response)
+
+    cbc_api_checked_response = None
+
+    api_access_values = _cbc_api_get_environ()
+
+    if api_access_values is not None:
+        cbc_api_del_response = requests.delete(api_access_values['api_base_url'] + api_endpoint, auth=CbcAPIAuth(api_access_values['access_key'], api_access_values['secret_key']))
+
+        cbc_api_checked_response = _check_response(cbc_api_del_response)
+
+
+    return cbc_api_checked_response
 
 
 def _check_response(response):
@@ -67,3 +121,5 @@ def _check_response(response):
     else:
         print('[?] Unexpected Error: [HTTP {0}]: Content: {1}'.format(response.status_code, response.content))
         return None
+
+
