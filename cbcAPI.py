@@ -23,10 +23,15 @@ __email__ = 'jonathan.giffard@couchbase.com'
 __status__ = 'Dev'
 
 # Handles talking to the endpoints
-# Returns a dictionary  ,   api_response = { responseContent : ' response ' ,
-# responseStatus : { httpStatus : 'http response', httpMessage : 'http message' }}
-# responseStatus allows the caller to take action on the http Status e.g 401 and the http
+# Returns a dictionary with the response and some metadata
+# api_response = { responseContent : ' response ' ,
+# responseHTTPInfo : { httpStatus : 'http response', httpMessage : 'http message' },
+# responseStatus : '' }
+#
+# responseHTTPInfo allows the caller to take action on the http Status e.g 401 and the http
 # message e.g Authentication failed if it wishes to
+# responseStatus is set to None if something went wrong and Success if everything is ok
+
 
 
 def _cbc_api_get_environ():
