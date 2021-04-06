@@ -44,4 +44,4 @@ Launch the application by running the _cloud_public_api_sample.py_ file from a t
 $ python cloud_public_api_sample.py
 ```
 ## Documentation
-Documentation for the beta APIs can be found at. https://github.com/couchbaselabs/cloud_public_api_sample![image](https://user-images.githubusercontent.com/39745127/113751815-37659680-9704-11eb-8050-48c2375c1290.png)
+Documentation for the beta APIs can be found at https://docs.couchbase.com/cloud/public-api-guide/introducing-public-api.html 
