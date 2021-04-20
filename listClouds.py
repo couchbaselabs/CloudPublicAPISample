@@ -85,7 +85,7 @@ def list_clouds():
         # Table heading / rows for the output
         cloud_table_headings = ['Name','Provider','Region', 'ID']
 
-        print('Cloud')
+        print('Clouds')
         print( _pretty_table(cloud_table_headings,cloud_table_rows))
     else:
         # We didn't get anything back
