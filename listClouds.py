@@ -40,6 +40,18 @@ def _pretty_table(table_heading, table_rows):
     return pretty_table
 
 
+def get_api_status():
+
+    returned_api_status = None
+
+    status_api_response = cbc_api_get('/v2/status')
+
+    if status_api_response['responseStatus'] is not None:
+        returned_api_status = status_api_response['responseHTTPInfo']['httpMessage']
+
+    return returned_api_status
+
+
 def ListClouds():
     # Lists all clouds showing the name, provider, creation date and ID
 
