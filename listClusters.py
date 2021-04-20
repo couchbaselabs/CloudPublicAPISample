@@ -61,7 +61,7 @@ def get_clusters_from_api():
 
     if cluster_api_response['responseStatus'] is not None:
         list_of_clusters = cluster_api_response['responseContent']
-        print(list_of_clusters)
+
         # Did we get a list?
         if list_of_clusters is not None:
             for cluster in list_of_clusters['data']:
