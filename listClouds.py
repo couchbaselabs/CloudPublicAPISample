@@ -9,7 +9,7 @@
 import texttable as tt
 
 # Owned
-import ./cbcapi/cbc_api.py 
+from cbcapi.cbc_api import cbc_api_get
 
 __author__ = 'Jonathan Giffard'
 __copyright__ = 'Copyright 2021, Couchbase'
@@ -46,8 +46,10 @@ def get_api_status():
 
     status_api_response = cbc_api_get('/v2/status')
 
-    if status_api_response['responseStatus'] is not None:
-        returned_api_status = status_api_response['responseHTTPInfo']['httpMessage']
+    if status_api_response is not None:
+        # API got called , check if we got something back
+        if status_api_response['responseStatus'] is not None:
+            returned_api_status = status_api_response['responseHTTPInfo']['httpMessage']
 
     return returned_api_status
 
@@ -102,5 +104,4 @@ def main():
 
 if __name__ == '__main__':
         main()
-
 
