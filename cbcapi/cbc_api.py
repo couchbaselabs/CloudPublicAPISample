@@ -11,13 +11,13 @@ import os
 
 
 # Owned
-from cbcAPIAuth import CbcAPIAuth
+from .cbc_api_auth import CbcAPIAuth
 
 __author__ = 'Jonathan Giffard'
 __copyright__ = 'Copyright 2021, Couchbase'
 __credits__ = ['Jonathan Giffard']
 __license__ = 'GPL 3.0'
-__version__ = '0.1.0'
+__version__ = '0.2.0'
 __maintainer__ = 'Jonathan Giffard'
 __email__ = 'jonathan.giffard@couchbase.com'
 __status__ = 'Dev'
@@ -41,8 +41,11 @@ def _cbc_api_get_environ():
 
     api_access_info = None
 
+    api_access_info_values = None
+
+
     # Read the values from the environmental variables
-    api_access_info_values  = {'access_key': os.environ.get('cbc_access_key'),
+    api_access_info_values = {'access_key': os.environ.get('cbc_access_key'),
                        'secret_key': os.environ.get('cbc_secret_key'),
                        'api_base_url': os.environ.get('cbc_base_url')
                        }
@@ -65,6 +68,7 @@ def _cbc_api_get_environ():
 
 
 def cbc_api_get(api_endpoint):
+    api_access_values = None
 
     api_access_values = _cbc_api_get_environ()
 
@@ -108,7 +112,7 @@ def cbc_api_del(api_endpoint):
 
 
 def _check_response(response):
-
+    # responseHTTPInfo allows the caller to take action on the http 
     api_response = {'responseContent': {},
                     'responseHTTPInfo': {
                         'httpStatus': '',
