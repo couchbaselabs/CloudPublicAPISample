@@ -50,6 +50,7 @@ def check_cluster( cluster_id):
     else:
         # Something went wrong.  Print out the messages
         print('Could not get the Cluster information')
+        print('Check the Cluster ID')
         print(check_cluster_response['responseContent']['message'])
 
     return
