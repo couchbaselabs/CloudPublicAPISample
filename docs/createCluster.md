@@ -3,9 +3,9 @@ Creates a 3 node cluster , all running the data service.
 
 createCluster requires three parameters to be provided
 
--cid ### ID of the Cloud connection to use with the cluster
--pid ### ID of the Project to use with the cluster
--cn ### Name for the cluster
+-cid ID of the Cloud connection to use with the cluster
+-pid ID of the Project to use with the cluster
+-cn Name for the cluster
   
 You can see the help for the parameters just running createCluster by itself e.g
 
