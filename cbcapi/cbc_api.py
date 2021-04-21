@@ -140,8 +140,8 @@ def _check_response(response):
         print('[!] [{0}] Server Error'.format(response.status_code))
         http_message = 'Server Error '  + str(response.status_code)
     elif response.status_code == 404:
-        print('[!] [{0}] URL not found: [{1}]'.format(response.status_code))
-        http_message = 'URL not found: ' + str(response.status_code)
+        print('[!] [{0}] URL not found '.format(response.status_code))
+        http_message = 'URL not found ' + str(response.status_code)
     elif response.status_code == 401:
         print('[!] [{0}] Authentication Failed'.format(response.status_code))
         http_message = 'Authentication Failed ' + str(response.status_code)
