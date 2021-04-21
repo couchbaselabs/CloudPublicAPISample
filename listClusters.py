@@ -81,8 +81,6 @@ def list_clusters():
 
     cluster_table_rows = get_clusters_from_api()
 
-    print(cluster_table_rows)
-
     if len(cluster_table_rows) > 0:
         # We got data back
         # Table heading / rows for the output
