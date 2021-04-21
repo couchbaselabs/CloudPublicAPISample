@@ -75,12 +75,12 @@ def get_projects_from_api():
 
 
 def list_projects():
-    # Lists all clouds showing the name, provider, creation date and ID
+    # Lists all projects showing the name, creation date and ID
 
-    # Get a list of clouds
+    # Get a list of projects
     # which will be used as rows in the output table
-
     project_table_rows = get_projects_from_api()
+    
     if len(projects_table_rows) > 0:
         # We got data back
         # Table heading / rows for the output
