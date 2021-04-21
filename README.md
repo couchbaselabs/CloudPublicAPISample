@@ -1,7 +1,5 @@
 # CloudPublicAPISample
-Here you will a number of a sample Python applications that demonstrate using various features of the Couchbase Cloud Public API to automate operations. 
-
-Right now there are only a few and more will be forthcoming overtime. 
+Here you will find a number of a sample Python applications that demonstrate using various features of the Couchbase Cloud Public API to automate operations. 
 
 To use any of these samples, follow the instructions below
 
