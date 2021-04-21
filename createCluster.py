@@ -5,7 +5,6 @@ import json
 import argparse
 
 # Other Libs
-import texttable as tt
 
 # Owned
 from cbcapi.cbc_api import cbc_api_get, cbc_api_post
@@ -19,24 +18,6 @@ __maintainer__ = 'Jonathan Giffard'
 __email__ = 'jonathan.giffard@couchbase.com'
 __status__ = 'Dev'
 
-
-def _pretty_table(table_heading, table_rows):
-    # This creates a formatted table using texttable
-
-    pretty_table = ''
-
-    tab_tt = tt.Texttable(900)
-
-    # Characters used for horizontal & vertical lines
-    # You can have different horizontal line for the header if wanted
-
-    tab_tt.set_chars(['-', '|', '-', '-'])
-
-    tab_tt.add_rows([table_heading] + table_rows)
-
-    pretty_table = tab_tt.draw()
-
-    return pretty_table
 
 
 def get_api_status():
