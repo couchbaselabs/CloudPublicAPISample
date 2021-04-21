@@ -81,7 +81,7 @@ def list_projects():
     # which will be used as rows in the output table
     project_table_rows = get_projects_from_api()
     
-    if len(projects_table_rows) > 0:
+    if len(project_table_rows) > 0:
         # We got data back
         # Table heading / rows for the output
         project_table_headings = ['Name', 'Created at', 'ID']
