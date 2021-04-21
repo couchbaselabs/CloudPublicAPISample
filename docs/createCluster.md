@@ -3,9 +3,9 @@ Creates a 3 node cluster , all running the data service.
 
 createCluster requires three parameters to be provided
 
--cid <ID of the Cloud connection to use with the cluster>
--pid <ID of the Project to use with the cluster>
--cn <Name for the cluster>
+-cid ### ID of the Cloud connection to use with the cluster
+-pid ### ID of the Project to use with the cluster
+-cn ### Name for the cluster
   
 You can see the help for the parameters just running createCluster by itself e.g
 
@@ -20,7 +20,7 @@ Cloud ID and Project ID to use with createCluster can be found by using listClou
 
 It will take several minutes for a cluster to be created. createCluster returns an endpoint to find out the status of the cluster which you can poll to see how the deployment is going.  Once the cluster reports as 'Healthy' it is ready for use.
 
-checkCluster can be used for this purpose
+checkCluster can be used for this purpose by using with it the long identifier that appears after /v2/clusters/ - this is the ID of the cluster.
 
 
 
