@@ -49,7 +49,7 @@ def check_cluster( cluster_id):
         print(json.dumps(check_cluster_response['responseContent'], indent=2))
     else:
         # Something went wrong.  Print out the messages
-        print('Cluster creation failed')
+        print('Could not get the Cluster information')
         print(check_cluster_response['responseContent']['message'])
 
     return
